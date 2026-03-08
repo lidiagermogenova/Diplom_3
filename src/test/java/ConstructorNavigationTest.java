@@ -12,15 +12,17 @@ public class ConstructorNavigationTest extends BaseTest {
     public void shouldSwitchToBunsSection() {
         homePage.clickSaucesTab();     // уйти с Булок
         homePage.clickBunsTab();
-        assertTrue(homePage.isBunsSectionDisplayed());
+        homePage.waitForBunsTabActive(); // ждем активации
+        assertTrue(homePage.isBunsTabActive());
     }
 
     @Test
     @DisplayName("Конструктор: переход на вкладку «Соусы»")
     @Description("Пользователь переключается на вкладку «Соусы» в конструкторе бургера. Проверяется отображение секции соусов.")
     public void shouldSwitchToSaucesSection() {
-        homePage.clickSaucesTab();    // перейти на Соусы
-        assertTrue(homePage.isSaucesSectionDisplayed());
+        homePage.clickSaucesTab();// перейти на Соусы
+        homePage.waitForSaucesTabActive(); // ждем активации
+        assertTrue(homePage.isSaucesTabActive());
     }
 
     @Test
@@ -28,6 +30,7 @@ public class ConstructorNavigationTest extends BaseTest {
     @Description("Пользователь переключается на вкладку «Начинки» в конструкторе бургера. Проверяется отображение секции начинок.")
     public void shouldSwitchToFillingsSection() {
         homePage.clickFillingsTab();
-        assertTrue(homePage.isFillingsSectionDisplayed());
+        homePage.waitForFillingsTabActive(); // ждем активации
+        assertTrue(homePage.isFillingsTabActive());
     }
 }

@@ -10,5 +10,4 @@ target/
 
 ### Логи и отчёты ###
 *.log
-allure-results/
 test-output/

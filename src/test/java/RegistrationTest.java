@@ -3,12 +3,8 @@ import constants.ValidationsMessage;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import testdata.UserTest;
 import testdata.TestUserFactory;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -57,9 +53,7 @@ public class RegistrationTest extends BaseTest {
                 user.getPassword()
         );
         signUpPage.clickRegisterButton();
-
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.urlContains("/register"));
+        signUpPage.waitForRegistrationPageToLoad(); // убрала ожидание из теста
 
         // остаемся и видим ошибку
         assertTrue(driver.getCurrentUrl().contains("/register"));

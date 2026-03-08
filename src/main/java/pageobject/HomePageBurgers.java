@@ -52,6 +52,42 @@ public class HomePageBurgers {
         driver.findElement(personalAccountButton).click();
     }
 
+    @Step("Дождаться активации вкладки Булки")
+    public void waitForBunsTabActive() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.attributeContains(bunsTab, "class", "tab_tab_type_current__2BEPc"));
+    }
+
+    @Step("Дождаться активации вкладки Соусы")
+    public void waitForSaucesTabActive() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.attributeContains(saucesTab, "class", "tab_tab_type_current__2BEPc"));
+    }
+
+    @Step("Дождаться активации вкладки Начинки")
+    public void waitForFillingsTabActive() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.attributeContains(fillingsTab, "class", "tab_tab_type_current__2BEPc"));
+    }
+
+    @Step("Проверить, что активна вкладка Булки")
+    public boolean isBunsTabActive() {
+        WebElement tab = driver.findElement(bunsTab);
+        return tab.getAttribute("class").contains("tab_tab_type_current__2BEPc");
+    }
+
+    @Step("Проверить, что активна вкладка Соусы")
+    public boolean isSaucesTabActive() {
+        WebElement tab = driver.findElement(saucesTab);
+        return tab.getAttribute("class").contains("tab_tab_type_current__2BEPc");
+    }
+
+    @Step("Проверить, что активна вкладка Начинки")
+    public boolean isFillingsTabActive() {
+        WebElement tab = driver.findElement(fillingsTab);
+        return tab.getAttribute("class").contains("tab_tab_type_current__2BEPc");
+    }
+
     @Step("Перейти в раздел «Булки»")
     public void clickBunsTab() {
         WebElement tab = new WebDriverWait(driver, Duration.ofSeconds(5))
@@ -59,10 +95,10 @@ public class HomePageBurgers {
         tab.click();
     }
 
-    @Step("Проверить, что отображается раздел «Булки»")
+   /* @Step("Проверить, что отображается раздел «Булки»")
     public boolean isBunsSectionDisplayed() {
         return driver.findElement(bunsSectionTitle).isDisplayed();
-    }
+    }*/
 
     @Step("Перейти в раздел «Соусы»")
     public void clickSaucesTab() {
@@ -71,10 +107,10 @@ public class HomePageBurgers {
         tab.click();
     }
 
-    @Step("Проверить, что отображается раздел «Соусы»")
+    /*@Step("Проверить, что отображается раздел «Соусы»")
     public boolean isSaucesSectionDisplayed() {
         return driver.findElement(getSaucesTitle).isDisplayed();
-    }
+    }*/
 
     @Step("Перейти в раздел «Начинки»")
     public void clickFillingsTab() {
@@ -83,10 +119,10 @@ public class HomePageBurgers {
         tab.click();
     }
 
-    @Step("Проверить, что отображается раздел «Начинки»")
+    /*@Step("Проверить, что отображается раздел «Начинки»")
     public boolean isFillingsSectionDisplayed() {
         return driver.findElement(fillingsSectionTitle).isDisplayed();
-    }
+    }*/
 
     @Step("Дождаться загрузки главной страницы")
     public void waitForMainPageToLoad() {

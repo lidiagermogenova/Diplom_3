@@ -34,7 +34,7 @@ public class SignUpPageBurgers {
     By loginLink = By.cssSelector("a[href='/login']");
 
     // Сообщение о некорректном пароле
-    private By passwordError = By.xpath("//form//fieldset[3]//div[.//input[@type='password']]//p");
+    private By passwordError = By.xpath("//p[contains(@class, 'input__error')]");
 
     // Метод для ожидания кликабельности, чтобы каждый раз не писать этот код
     private WebElement waitForClickable(By locator) {
@@ -88,6 +88,12 @@ public class SignUpPageBurgers {
     @Step("Проверить, что отображается ошибка пароля")
     public boolean isPasswordErrorDisplayed() {
         return waitForVisible(passwordError).isDisplayed();
+    }
+
+    @Step("Дождаться загрузки страницы регистрации")
+    public void waitForRegistrationPageToLoad() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.urlContains("/register"));
     }
 
     @Step("Получить текст ошибки пароля")

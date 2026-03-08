@@ -2,6 +2,7 @@ import api.UserApi;
 import constants.Urls;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import testdata.UserTest;
@@ -11,10 +12,20 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
     private UserTest user;
+    private String accessToken;
+
     @Before
     public void createUser() {
         user = TestUserFactory.validUser();
         UserApi.createUser(user);
+        accessToken = UserApi.loginAndGetToken(user);
+    }
+
+    @After
+    public void deleteUser() {
+        if (accessToken != null && !accessToken.isEmpty()) {
+            UserApi.deleteUser(accessToken);
+        }
     }
 
     @Test
