@@ -11,3 +11,6 @@ target/
 ### Логи и отчёты ###
 *.log
 test-output/
+# Allure
+.allure/
+allure-report/

@@ -95,11 +95,6 @@ public class HomePageBurgers {
         tab.click();
     }
 
-   /* @Step("Проверить, что отображается раздел «Булки»")
-    public boolean isBunsSectionDisplayed() {
-        return driver.findElement(bunsSectionTitle).isDisplayed();
-    }*/
-
     @Step("Перейти в раздел «Соусы»")
     public void clickSaucesTab() {
         WebElement tab = new WebDriverWait(driver, Duration.ofSeconds(5))
@@ -107,22 +102,12 @@ public class HomePageBurgers {
         tab.click();
     }
 
-    /*@Step("Проверить, что отображается раздел «Соусы»")
-    public boolean isSaucesSectionDisplayed() {
-        return driver.findElement(getSaucesTitle).isDisplayed();
-    }*/
-
     @Step("Перейти в раздел «Начинки»")
     public void clickFillingsTab() {
         WebElement tab = new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(fillingsTab));
         tab.click();
     }
-
-    /*@Step("Проверить, что отображается раздел «Начинки»")
-    public boolean isFillingsSectionDisplayed() {
-        return driver.findElement(fillingsSectionTitle).isDisplayed();
-    }*/
 
     @Step("Дождаться загрузки главной страницы")
     public void waitForMainPageToLoad() {
